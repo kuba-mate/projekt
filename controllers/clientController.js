@@ -4,6 +4,7 @@ const clientsFilePath = path.join(__dirname, "../data/customers.json");
 const loginsFilePath = path.join(__dirname, "../data/logins.json");
 const carsFilePath = path.join(__dirname, "../data/cars.json");
 let loggedIn = null;
+let client = null;
 
 const clientController = {
 
@@ -19,11 +20,12 @@ const clientController = {
     },
 
     getAccountPage: (req, res) => {
-        res.render('accountPage.ejs');
+        res.render('accountPage.ejs', {client});
     },
 
     getRegisterPage: (req, res) => {
-        res.render('registerPage');
+        const error = '';
+        res.render('registerPage', {error});
     },
 
     getLoginPage: (req, res) => {
@@ -35,26 +37,56 @@ const clientController = {
         const phone = req.body.Phone;
         const address = req.body.Address;
         const login = req.body.username;
-        const password = req.body.password
-        const customers = JSON.parse(fs.readFileSync(clientsFilePath, "utf-8")); 
+        const password = req.body.password;
+        const confirmPassword = req.body.confirmPassword;
+        const customers = JSON.parse(fs.readFileSync(clientsFilePath, "utf-8"));
         const logins = JSON.parse(fs.readFileSync(loginsFilePath, "utf-8"));
+    
+        // Walidacja: Czy wszystkie pola są wypełnione
+        if (!name || !phone || !address || !login || !password || !confirmPassword) {
+            const error = 'Wszystkie pola są wymagane.';
+            return res.render('registerPage', { error });
+        }
+
+        // Walidacja: Czy hasło i potwierdzenie hasła są takie same
+        if (password !== confirmPassword) {
+            const error = 'Hasło i potwierdzenie hasła muszą być identyczne.';
+            return res.render('registerPage', { error });
+        }
+
+        // Walidacja: Czy nazwa użytkownika jest już zajęta
+        const existingUser = logins.find((user) => user.Login === login);
+        if (existingUser) {
+            const error = 'Podana nazwa użytkownika jest już zajęta.';
+            return res.render('registerPage', { error });
+        }
+
+        // Walidacja: Czy numer telefonu jest już w bazie
+        const existingPhone = customers.find((customer) => customer.Phone === phone);
+        if (existingPhone) {
+            const error = 'Podany numer telefonu jest już przypisany do innego konta.';
+            return res.render('registerPage', { error });
+        }
+    
         const newCustomer = { CustomerID: customers.length + 1, Name: name, Phone: phone, Address: address, LoginID: customers.length + 1 };
-        const newLogin = { LoginID: customers.length + 1, Login: login, Password: password};
+        const newLogin = { LoginID: customers.length + 1, Login: login, Password: password };
         customers.push(newCustomer);
         logins.push(newLogin);
         fs.writeFileSync(clientsFilePath, JSON.stringify(customers, null, 2));
         fs.writeFileSync(loginsFilePath, JSON.stringify(logins, null, 2));
         res.redirect('/');
     },
+    
 
     checkLogin: (req, res) => {
         const { username, password } = req.body;
         const logins = JSON.parse(fs.readFileSync(loginsFilePath, "utf-8"));
+        const customers = JSON.parse(fs.readFileSync(clientsFilePath, "utf-8"));
         const user = logins.find((user) => user.Login === username);
-
+    
         if (user && user.Password === password) {
             loggedIn = true;
-            client = user;
+            client = customers.find((x) => x.LoginID === user.LoginID);
             res.redirect('/');
         } else {
             res.render('loginPage', { error: 'Invalid username or password' });

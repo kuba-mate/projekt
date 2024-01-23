@@ -71,6 +71,15 @@
             color: white;
         }
 
+        .error {
+            color: red;
+            font-size: 0.8em;
+        }
+
+        .input-error {
+            border: 2px solid red;
+        }
+
         footer {
             background-color: #333;
             color: white;
@@ -95,6 +104,9 @@
 
     <section>
         <h2>Rejestracja</h2>
+        <% if (error) { %>
+            <p class="error"><%= error %></p>
+        <% } %>
         <form action="/register" method="POST">
             <label for="username">Nazwa Użytkownika:</label>
             <input type="text" id="username" name="username" required>
@@ -117,7 +129,6 @@
             <button type="submit"> Zarejestruj </button>
         </form>
     </section>
-
     <footer>
         &copy; 2024 Wypożyczalnia Samochodów
     </footer>

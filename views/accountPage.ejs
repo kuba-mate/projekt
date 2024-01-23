@@ -37,6 +37,10 @@
             width: 100%;
         }
 
+        p,a{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 24px;
+        }
 
         .text{
             text-align: center;
@@ -51,7 +55,11 @@
     </header>
 
     <h1 class="text">Moje konto</h1>
-
+    <p>ID klienta : <%= client.CustomerID %></p>
+    <p>Imie i nazwisko : <%= client.Name %></p>
+    <p>Numer telefonu : <%= client.Phone %></p>
+    <p>Adres zamieszkania : <%= client.Address %></p>
+    <p><a href="/account/<%= client.CustomerID %>"> Moje zamówienia </a></p>
     <a href="/">Strona Główna</a>
 
     <footer>
