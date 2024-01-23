@@ -3,18 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista Samochodów</title>
+    <title>Document</title>
+
     <style>
+
         body {
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        .text {
-            text-align: center;
-            font-size: 50px;
         }
 
         header {
@@ -25,11 +22,26 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 0;
         }
 
         .main{
             margin: 0;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .text{
+            text-align: center;
+            font-size: 50px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
 
         table {
@@ -45,59 +57,40 @@
             font-size: 30px;
         }
 
-        #dodaj {
-            text-align: center;
-            font-size: 30px;
-            text-decoration: none;
-            margin-top: 50px;
-            display: block;
-        }
-
-        #dodaj:hover {
-            color: black;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1em;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
     </style>
+
 </head>
 <body>
-
     <header>
         <h1 class="main">Wypożyczalnia Samochodów</h1>
     </header>
 
-    <h1 class="text">LISTA SAMOCHODÓW</h1>
+    <h1 class="text">Moje zamówienia</h1>
+
     <table border="1">
         <tr>
-            <th> Model </th>
-            <th> Cena za dzień </th>
-            <th> Link do szczegółów </th>
-            <th> Wypożycz </th>
+            <th> ID </th>
+            <th> ID Samochodu </th>
+            <th> Detale Samochodu</th>
+            <th> Data Rozpoczęcia </th>
+            <th> Data Zakończenia </th>
         </tr>
         <tbody>
-            <% cars.forEach((car) => { %>
+            <% customersRentals.forEach((rental) => { %>
                 <tr>
-                    <td><%= car.Model %></td>
-                    <td><%= car.CostPerDay + " PLN" %></td>
-                    <td><a href="/cars/<%= car.CarID %>">Sprawdź ofertę</a></td>
-                    <td><a href="/rentals/<%= car.CarID %>"> Wypożycz</a></td>
+                    <td><%= rental.RentalID %></td>
+                    <td><%= rental.CarID %></td>
+                    <td><a href="/cars/<%= rental.CarID %>"> Sprawdź samochód </a></td>
+                    <td><%= rental.RentalStartDate %></td>
+                    <td><%= rental.RentalEndDate %></td>
                 </tr>
             <% }) %>
         </tbody>
     </table>
-    <a href="/">Strona Główna</a>
+    <a href="/account">Wróć do mojego konta</a>
 
     <footer>
         &copy; 2024 Wypożyczalnia Samochodów
     </footer>
-
 </body>
 </html>

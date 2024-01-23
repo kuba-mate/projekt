@@ -127,8 +127,8 @@
         <p>Wypożycz teraz i odbierz 10% zniżki!</p>
     </section>
 
+    <h1> Dostępne samochody </h1>
     <section class="car-list">
-        <h2>Dostępne Samochody</h2>
 
         <% cars.forEach((car) => { %>
             <div class="car-card">
@@ -136,12 +136,12 @@
                 <p>Rok produkcji: <%= car.Year %></p>
                 <p>Kolor: <%= car.Color %></p>
                 <p>Cena za dzień: <%= car.CostPerDay %> PLN</p>
-                <button>Wypożycz</button>
+                <button><a href="/rentals/<%= car.CarID %>">Wypożycz</a></button>
             </div>
         <% }); %>
 
         <p class="oferta"><a href="/cars/"> Zobacz więcej ofert </a></p>
-
+    </section>        
     <footer>
         &copy; 2024 Wypożyczalnia Samochodów
     </footer>

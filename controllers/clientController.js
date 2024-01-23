@@ -3,6 +3,7 @@ const path = require('path');
 const clientsFilePath = path.join(__dirname, "../data/customers.json");
 const loginsFilePath = path.join(__dirname, "../data/logins.json");
 const carsFilePath = path.join(__dirname, "../data/cars.json");
+const rentalsFilePath = path.join(__dirname, "../data/rentals.json");
 let loggedIn = null;
 let client = null;
 
@@ -76,7 +77,6 @@ const clientController = {
         fs.writeFileSync(loginsFilePath, JSON.stringify(logins, null, 2));
         res.redirect('/');
     },
-    
 
     checkLogin: (req, res) => {
         const { username, password } = req.body;
@@ -90,8 +90,15 @@ const clientController = {
             res.redirect('/');
         } else {
             res.render('loginPage', { error: 'Invalid username or password' });
-        }
+        }      
+    },
+
+    getClientRentalPage: (req, res) => {
+        const id = req.params.id;
+        const rentals = JSON.parse(fs.readFileSync(rentalsFilePath, "utf-8"));
+        const customersRentals = rentals.filter((a) => a.CustomerID === parseInt(id));
+        res.render('clientRentalsPage.ejs', {customersRentals});
     }
 };
 
-module.exports = clientController;
+module.exports = {clientController, loggedIn, client};

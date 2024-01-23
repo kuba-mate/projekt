@@ -1,19 +1,18 @@
-{
-    "rentals": [
-      {
-        "RentalID": 1,
-        "CarID": 1,
-        "CustomerID": 1,
-        "RentalStartDate": "2024-01-20",
-        "RentalEndDate": "2024-02-03"
-      },
-      {
-        "RentalID": 2,
-        "CarID": 3,
-        "CustomerID": 2,
-        "RentalStartDate": "2024-01-21",
-        "RentalEndDate": "2024-01-30"
-      }
-    ]
+[
+  {
+    "RentalID": 1,
+    "CarID": 1,
+    "CustomerID": 1,
+    "RentalStartDate": "2024-01-20",
+    "RentalEndDate": "2024-02-03"
+  },
+  {
+    "RentalID": 2,
+    "CarID": 3,
+    "CustomerID": 2,
+    "RentalStartDate": "2024-01-21",
+    "RentalEndDate": "2024-01-30"
   }
+]
+
   

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .main {
+            margin: 0;
+        }
+
+        .car-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 1em;
+            width: 60%; /* Dostosuj szerokość */
+            margin-top: 20px; /* Dostosuj marginesy */
+        }
+
+        .date-form {
+            text-align: center;
+        }
+
+        .date-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .date-form input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="main">Wypożyczalnia Samochodów</h1>
+    </header>
+    
+    <h1> Obecnie oglądasz</h1>
+    <div class="car-card">
+        <h3 id="model"><%= car.Model %></h3>
+        <p>Rok produkcji: <%= car.Year %></p>
+        <p>Kolor: <%= car.Color %></p>
+        <p>Cena za dzień: <%= car.CostPerDay %> PLN</p>
+    
+        <div class="date-form">
+            <form action="/rentals/:id" method="post">
+                <input type="hidden" id="costPerDay" name="costPerDay" value="<%= car.CostPerDay %>">
+    
+                <label for="start">Data rozpoczęcia wypożyczenia:</label>
+                <input type="text" id="start" name="start" placeholder="UWAGA!!! daty muszą być w formacie YYYY-MM-DD" required>                
+    
+                <label for="end">Data zakończenia wypożyczenia:</label>
+                <input type="text" id="end" name="end" placeholder="UWAGA!!! daty muszą być w formacie YYYY-MM-DD" required>
+    
+                <input type="submit" value="Zrealizuj zakup">
+            </form>
+        </div>
+    </div>
+
+    <a href="/">Strona Główna</a>
+
+    <footer>
+        &copy; 2024 Wypożyczalnia Samochodów
+    </footer>
+</body>
+</html>
