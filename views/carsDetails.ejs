@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detale produktu</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .main{
+            margin: 0;
+        }
+
+        .text{
+            text-align: center;
+            font-size: 50px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        p,a{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="main">Wypożyczalnia Samochodów</h1>
+    </header>
+    <h1 class="text">Detale produktu</h1>
+    <p>ID samochodu : <%= car.CarID %></p>
+    <p>Model samochodu : <%= car.Model %></p>
+    <p>Rok wyprodukowania : <%= car.Year %></p>
+    <p>Kolor samochodu : <%= car.Color %></p>
+    <p>Status wypożyczenia : <%= car.RentalStatus? "Zajęty" : "Wolny" %></p>
+    <p>Cena samochodu za dzień : <%= car.CostPerDay + " PLN" %></p>
+    <a href="/cars">Wróć do listy wszystkich produktów</a>
+
+    <footer>
+        &copy; 2024 Wypożyczalnia Samochodów
+    </footer>
+</body>
+</html>

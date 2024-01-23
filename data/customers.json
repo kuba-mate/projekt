@@ -1,0 +1,30 @@
+[
+  {
+    "CustomerID": 1,
+    "Name": "John Doe",
+    "Phone": "+1 123-456-7890",
+    "Address": "123 Main Street, Cityville",
+    "LoginID": 1
+  },
+  {
+    "CustomerID": 2,
+    "Name": "Jane Smith",
+    "Phone": "+1 987-654-3210",
+    "Address": "456 Oak Avenue, Townsville",
+    "LoginID": 2
+  },
+  {
+    "CustomerID": 3,
+    "Name": "Bob Johnson",
+    "Phone": "+1 555-123-4567",
+    "Address": "789 Pine Lane, Villagetown",
+    "LoginID": 3
+  },
+  {
+    "CustomerID": 4,
+    "Name": "aa",
+    "Phone": "aa",
+    "Address": "aa",
+    "LoginID": 4
+  }
+]

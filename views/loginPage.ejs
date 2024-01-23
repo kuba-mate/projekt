@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logowanie</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .error-message {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: red;
+            font-size: 24px;
+            margin-top: 5px;
+            margin-left: 30px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .login-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .login-link {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 0.5em;
+            border: 1px solid white;
+            border-radius: 4px;
+        }
+
+        section {
+            margin: 2em;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            padding: 0.5em;
+        }
+
+        button {
+            padding: 0.5em;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        a {
+            color: white;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Wypożyczalnia Samochodów</h1>
+        <div class="login-links">
+            <a href="/login" class="login-link">Zaloguj</a>
+            <a href="/register" class="login-link">Zarejestruj</a>
+        </div>
+    </header>
+
+    <section>
+        <h2>Logowanie</h2>
+        <form action="/login" method="POST">
+            <label for="username">Nazwa Użytkownika:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Hasło:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit"> Zaloguj </button>
+        </form>
+    </section>
+
+    <% if (typeof error !== 'undefined' && error !== null) { %>
+        <p class="error-message"><%= error %></p>
+    <% } %>
+
+    <footer>
+        &copy; 2024 Wypożyczalnia Samochodów
+    </footer>
+
+</body>
+</html>

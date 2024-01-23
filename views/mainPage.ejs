@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wypożyczalnia Samochodów</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .login-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .login-link {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 0.5em;
+            border: 1px solid white;
+            border-radius: 4px;
+        }
+
+        .oferta {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 30px;
+            margin: 50px;
+        }
+
+        .account-icon {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+        }
+
+        .account-icon img {
+            width: 20px;
+            height: auto;
+            margin-right: 5px;
+        }
+
+        section {
+            margin: 2em;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .special-offer {
+            background-color: #ffd700;
+            padding: 1em;
+            border-radius: 8px;
+        }
+
+        .car-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+        }
+
+        .car-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 1em;
+            width: 300px;
+        }
+
+        .search-form {
+            margin-top: 2em;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <header>
+        <h1>Wypożyczalnia Samochodów</h1>
+        <div class="login-links">
+            <% if (loggedIn) { %>
+                <a href="/account" class="account-icon">
+                    Moje konto
+                </a>
+            <% } else { %>
+                <a href="/login" class="login-link">Zaloguj</a>
+                <a href="/register" class="login-link">Zarejestruj</a>
+            <% } %>
+        </div>
+    </header>
+
+    <section class="special-offer">
+        <h2>Oferta Specjalna</h2>
+        <p>Wypożycz teraz i odbierz 10% zniżki!</p>
+    </section>
+
+    <section class="car-list">
+        <h2>Dostępne Samochody</h2>
+
+        <% cars.forEach((car) => { %>
+            <div class="car-card">
+                <h3><%= car.Model %></h3>
+                <p>Rok produkcji: <%= car.Year %></p>
+                <p>Kolor: <%= car.Color %></p>
+                <p>Cena za dzień: <%= car.CostPerDay %> PLN</p>
+                <button>Wypożycz</button>
+            </div>
+        <% }); %>
+
+        <p class="oferta"><a href="/cars/"> Zobacz więcej ofert </a></p>
+
+    <footer>
+        &copy; 2024 Wypożyczalnia Samochodów
+    </footer>
+
+</body>
+</html>

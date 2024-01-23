@@ -1,0 +1,26 @@
+[
+  {
+    "CarID": 1,
+    "Model": "Toyota Camry",
+    "Year": 2020,
+    "Color": "Srebrny",
+    "RentalStatus": true,
+    "CostPerDay": 200
+  },
+  {
+    "CarID": 2,
+    "Model": "Ford Escape",
+    "Year": 2019,
+    "Color": "Niebieski",
+    "RentalStatus": false,
+    "CostPerDay": 100
+  },
+  {
+    "CarID": 3,
+    "Model": "Honda Civic",
+    "Year": 2021,
+    "Color": "Czerwony",
+    "RentalStatus": true,
+    "CostPerDay": 150
+  }
+]

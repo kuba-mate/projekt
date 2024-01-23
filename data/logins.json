@@ -1,0 +1,22 @@
+[
+  {
+    "LoginID": 1,
+    "Login": "jdoe",
+    "Password": "aaa"
+  },
+  {
+    "LoginID": 2,
+    "Login": "jsmith",
+    "Password": "bbb"
+  },
+  {
+    "LoginID": 3,
+    "Login": "bobj",
+    "Password": "ccc"
+  },
+  {
+    "LoginID": 4,
+    "Login": "aa",
+    "Password": "aa"
+  }
+]
