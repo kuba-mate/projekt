@@ -76,7 +76,8 @@
         }
 
         a {
-            color: white;
+            padding: 2em;
+            color: black;
         }
 
         footer {
@@ -112,11 +113,11 @@
             <button type="submit"> Zaloguj </button>
         </form>
     </section>
-
     <% if (typeof error !== 'undefined' && error !== null) { %>
         <p class="error-message"><%= error %></p>
     <% } %>
 
+    <a href="/">Strona Główna</a>
     <footer>
         &copy; 2024 Wypożyczalnia Samochodów
     </footer>

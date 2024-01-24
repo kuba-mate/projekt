@@ -45,6 +45,29 @@
             font-size: 30px;
         }
 
+        .pagination {
+            list-style: none;
+            display: flex;
+            gap: 5px;
+        }
+
+        .pagination li {
+            display: inline-block;
+        }
+
+        .pagination a {
+            text-decoration: none;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            color: #333;
+        }
+
+        .pagination li.active a {
+            background-color: #333;
+            color: white;
+        }
+
+
         #dodaj {
             text-align: center;
             font-size: 30px;
@@ -93,6 +116,15 @@
             <% }) %>
         </tbody>
     </table>
+
+    <ul class="pagination">
+        <% for (let i = 1; i <= totalPages; i++) { %>
+            <li <% if (i === currentPage) { %>class="active"<% } %>>
+                <a href="/cars?page=<%= i %>"><%= i %></a>
+            </li>
+        <% } %>
+    </ul>
+
     <a href="/">Strona Główna</a>
 
     <footer>

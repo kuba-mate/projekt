@@ -4,15 +4,20 @@ const clientsFilePath = path.join(__dirname, "../data/customers.json");
 const loginsFilePath = path.join(__dirname, "../data/logins.json");
 const carsFilePath = path.join(__dirname, "../data/cars.json");
 const rentalsFilePath = path.join(__dirname, "../data/rentals.json");
-let loggedIn = null;
+let loggedIn= null;
 let client = null;
 
 const clientController = {
 
+    getLoggedIn: () => {
+        return loggedIn;
+    },
+
+    getClient: () => {
+        return client;
+    },
+    
     getMainPage: (req, res) => {
-        if(loggedIn != true){
-            loggedIn = false;
-        }
         const cars = JSON.parse(fs.readFileSync(carsFilePath, "utf-8"));
         const car1 = cars.find((p) => p.CarID === parseInt(1));
         const car2 = cars.find((p) => p.CarID === parseInt(2));
@@ -101,4 +106,4 @@ const clientController = {
     }
 };
 
-module.exports = {clientController, loggedIn, client};
+module.exports = {clientController};

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {clientController, loggedIn, client} = require('../controllers/clientController');
+const {clientController} = require('../controllers/clientController');
 
 router.get('/', clientController.getMainPage);
 router.get('/register', clientController.getRegisterPage);
