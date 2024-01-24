@@ -26,5 +26,12 @@
     "CustomerID": 4,
     "RentalStartDate": "2024-01-21",
     "RentalEndDate": "2024-01-27"
+  },
+  {
+    "RentalID": 5,
+    "CarID": 3,
+    "CustomerID": 1,
+    "RentalStartDate": "2024-01-24",
+    "RentalEndDate": "2024-01-25"
   }
 ]
